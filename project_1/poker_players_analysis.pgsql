@@ -4,7 +4,6 @@
     -- Table 1: Top 100 female poker players
     -- Table 2: Poker events
 
-
 -- GOAL 
 -- Create an aggregated view to find the following player stats:
 
@@ -137,6 +136,8 @@ COPY (SELECT *
 		) AS r
 	USING(name_, metrics)
 	)
-TO 
+TO 'C:\Users\DIANA\Desktop\SQL\project_1\Output\top_100_female_poker_players.csv'
+DELIMITER ',' 
+CSV HEADER
 ;
 
