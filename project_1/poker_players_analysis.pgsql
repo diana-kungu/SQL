@@ -136,7 +136,7 @@ COPY (SELECT *
 		) AS r
 	USING(name_, metrics)
 	)
-TO 'C:\Users\DIANA\Desktop\SQL\project_1\Output\top_100_female_poker_players.csv'
+TO '~path\Output\top_100_female_poker_players.csv'
 DELIMITER ',' 
 CSV HEADER
 ;
