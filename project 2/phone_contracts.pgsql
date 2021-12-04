@@ -1,10 +1,16 @@
 -- SQL flavor postgresql
+
+--Scenario
+--You work for a mobile / cell phone company. You boss asks you to pull together the 
+--revenue report of your current batch of contracts. They need to know how much revenue
+-- is generated each month from these contracts whilst they are 'live' 
+
 -- GOAL 
     -- Calculate the monthly cumulative cost of each person's contract
-    -- for the duration of the contract_length
+    -- for the duration of the contract_length.
 
 
--- Load data to server
+-- Load data
 
 DROP TABLE IF EXISTS phone_contracts;
 
