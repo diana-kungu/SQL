@@ -4,13 +4,14 @@
 --Car dealership sales data 
 
 -- GOAL 
-    -- Aggregate car sales per color, dealer and month.
+    -- Create a date from month and year Integers
+	-- Aggregate car sales per color, dealer and month.
 
 
 -- Load data
 
 SELECT 
-	    TO_DATE(CONCAT('01', '-', when_sold_month, '-', when_sold_year),'DD-M-YYYY') AS Date,
+	    TO_DATE(CONCAT('01', '-', when_sold_month, '-', when_sold_year),'DD-MM-YYYY') AS Date,
 		"Dealership",
 	    Red_Cars,
 	    Silver_Cars,
