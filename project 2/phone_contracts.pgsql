@@ -24,7 +24,8 @@ CREATE TABLE IF NOT EXISTS phone_contracts (
 
 --COPY Data into table
 COPY phone_contracts
-FROM 'E:\Data\phone_contracts.csv'
+FROM 'C:/Users/DIANA/Desktop/Projects/SQL/Data/phone_contracts.csv'
+DELIMITER ','
 CSV HEADER
 ;
 
