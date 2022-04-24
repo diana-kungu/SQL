@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS phone_contracts (
 --COPY Data into table
 \COPY phone_contracts FROM 'C://Users/DIANA/Desktop/Projects/SQL/Data/phone_contracts.csv'
 DELIMITER ','
-CSV HEADER
+CSV HEADER;
 
 
 DROP TABLE IF EXISTS tbl;
@@ -35,7 +35,7 @@ DROP TABLE IF EXISTS tbl;
 SELECT *,
     start_date + interval '1 month' * (contract_length-1) AS end_date
 INTO TEMP tbl
-FROM phone_contracts pc
+FROM phone_contracts
 ;
 
 DROP TABLE IF EXISTS tbl_1;

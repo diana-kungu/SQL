@@ -1,0 +1,65 @@
+W-L,Result,HI-Points Player,HI-Points Value,HI-Rebounds Player,HI-Rebounds Value,HI-Assists Player,HI-Assists Value,home_or_away,Opponent_cleaned,true_date
+1-0,W112-108,DeRozan,28,Aldridge,19,Gasol,6,Home,Minnesota,2018-10-18
+1-1,L121-108,DeRozan,28,Aldridge,8,DeRozan,9,Away,Portland,2018-10-21
+2-1,W143-142 OT,Aldridge,37,Cunningham,12,DeRozan,14,Away,Los Angeles,2018-10-23
+2-2,L116-96,DeRozan,18,Aldridge,13,DeRozan,4,Home,Indiana,2018-10-25
+3-2,W110-106,DeRozan,30,DeRozan,12,DeRozan,8,Home,Los Angeles,2018-10-28
+4-2,W113-108 OT,DeRozan,34,Gay,11,DeRozan,9,Home,Dallas,2018-10-30
+5-2,W120-90,DeRozan,25,Gasol,9,Forbes,7,Away,Phoenix,2018-11-01
+6-2,W109-95,DeRozan,26,Aldridge,12,Mills,7,Home,New Orleans,2018-11-04
+6-3,L117-110,DeRozan,25,Gasol,8,DeRozan,5,Home,Orlando,2018-11-05
+6-4,L95-88,Mills,20,Aldridge,16,DeRozan,8,Away,Miami,2018-11-08
+7-4,W96-89,Aldridge,27,DeRozan,11,White,8,Home,Houston,2018-11-11
+7-5,L104-99,DeRozan,23,Aldridge,18,DeRozan,8,Away,Sacramento,2018-11-13
+7-6,L116-96,DeRozan,24,Aldridge,12,DeRozan,4,Away,Phoenix,2018-11-15
+7-7,L116-111,DeRozan,34,Aldridge,16,DeRozan,5,Away,LA,2018-11-16
+8-7,W104-92,Aldridge,24,Aldridge,18,DeRozan,9,Home,Golden State,2018-11-19
+8-8,L140-126,DeRozan,21,Aldridge,10,DeRozan,5,Away,New Orleans,2018-11-20
+8-9,L104-103,DeRozan,24,Aldridge,11,DeRozan,5,Home,Memphis,2018-11-22
+9-9,W111-100,Aldridge,33,Aldridge,14,Gay,7,Away,Indiana,2018-11-24
+9-10,L135-129,DeRozan,34,Cunningham,10,DeRozan,7,Away,Milwaukee,2018-11-25
+10-10,W108-107,DeRozan,21,DeRozan,8,Forbes,6,Away,Chicago,2018-11-27
+10-11,L128-89,Poeltl,14,Aldridge,9,White,4,Away,Minnesota,2018-11-29
+10-12,L136-105,Aldridge,20,Gay,8,White,9,Home,Houston,2018-12-01
+11-12,W131-118,DeRozan,36,DeRozan,8,DeRozan,6,Home,Portland,2018-12-03
+11-13,L139-105,Poeltl,20,Poeltl,7,DeRozan,7,Away,Utah,2018-12-05
+11-14,L121-113,DeRozan,32,Aldridge,9,White,5,Away,Los Angeles,2018-12-06
+12-14,W133-120,DeRozan,36,DeRozan,8,DeRozan,9,Home,Los Angeles,2018-12-08
+13-14,W110-97,DeRozan,26,Gay,15,DeRozan,8,Home,Utah,2018-12-10
+14-14,W111-86,Forbes,24,Forbes,11,DeRozan,9,Home,Phoenix,2018-12-12
+15-14,W125-87,Aldridge,27,Gay,6,DeRozan,7,Home,LA,2018-12-14
+15-15,L98-93,Aldridge,29,Aldridge,12,Gay,4,Home,Chicago,2018-12-16
+16-15,W123-96,Gay,21,Aldridge,10,DeRozan,7,Home,Philadelphia,2018-12-18
+17-15,W129-90,Aldridge,20,DeRozan,7,DeRozan,6,Away,Orlando,2018-12-20
+18-15,W124-98,Forbes,22,Aldridge,9,DeRozan,8,Home,Minnesota,2018-12-22
+18-16,L108-101,DeRozan,28,Gay,8,DeRozan,8,Away,Houston,2018-12-23
+19-16,W111-103,DeRozan,30,Poeltl,11,DeRozan,5,Home,Denver,2018-12-27
+19-17,L102-99,Aldridge,24,Aldridge,7,DeRozan,5,Away,Denver,2018-12-29
+20-17,W122-111,Aldridge,38,DeRozan,13,Forbes,7,Away,LA,2018-12-30
+21-17,W120-111,Aldridge,32,Aldridge,9,DeRozan,10,Home,Boston,2019-01-01
+22-17,W125-107,Aldridge,23,DeRozan,14,DeRozan,11,Home,Toronto,2019-01-04
+23-17,W108-88,White,19,DeRozan,9,Aldridge,7,Home,Memphis,2019-01-06
+24-17,W119-107,DeRozan,26,DeRozan,7,DeRozan,9,Away,Detroit,2019-01-08
+24-18,L96-86,Forbes,14,Gasol,12,DeRozan,4,Away,Memphis,2019-01-10
+25-18,W154-147 2OT,Aldridge,56,Aldridge,9,DeRozan,11,Home,Oklahoma City,2019-01-11
+25-19,L122-112,Belinelli,24,Poeltl,10,DeRozan,4,Away,Oklahoma City,2019-01-13
+25-20,L108-93,Aldridge,28,Aldridge,10,White,7,Home,Charlotte,2019-01-15
+26-20,W105-101,Belinelli,17,Poeltl,7,DeRozan,9,Away,Dallas,2019-01-17
+27-20,W116-113,Aldridge,25,Aldridge,9,Mills,8,Away,Minnesota,2019-01-19
+27-21,L103-95,Aldridge,30,Aldridge,14,White,4,Home,LA,2019-01-21
+27-22,L122-120,DeRozan,26,DeRozan,9,Aldridge,6,Away,Philadelphia,2019-01-24
+28-22,W126-114,Aldridge,28,Aldridge,12,Mills,5,Away,New Orleans,2019-01-26
+29-22,W132-119,Aldridge,30,Aldridge,9,Mills,7,Home,Washington,2019-01-28
+30-22,W126-124,Aldridge,29,Aldridge,14,Bertans,5,Home,Phoenix,2019-01-30
+31-22,W117-114,White,26,Aldridge,13,White,6,Home,Brooklyn,2019-02-01
+32-22,W113-108,Aldridge,25,Aldridge,14,DeRozan,5,Home,New Orleans,2019-02-03
+32-23,L127-112,DeRozan,24,Aldridge,9,DeRozan,4,Away,Sacramento,2019-02-05
+32-24,L141-102,Mills,16,Cunningham,5,Poeltl,6,Away,Golden State,2019-02-07
+32-25,L127-118,DeRozan,35,Aldridge,10,Mills,8,Away,Portland,2019-02-08
+32-26,L125-105,DeRozan,23,Aldridge,10,DeRozan,5,Away,Utah,2019-02-09
+33-26,W108-107,Aldridge,22,Gay,12,Gay,8,Away,Memphis,2019-02-13
+33-27,L120-117,DeRozan,23,Gay,10,DeRozan,8,Away,Toronto,2019-02-23
+33-28,L130-118,DeRozan,32,DeRozan,9,DeRozan,4,Away,New York,2019-02-25
+33-29,L101-85,Aldridge,26,Aldridge,10,White,4,Away,Brooklyn,2019-02-26
+34-29,W105-93,Aldridge,24,Poeltl,14,DeRozan,8,Home,Detroit,2019-02-28
+35-29,W116-102,Aldridge,27,Aldridge,10,DeRozan,7,Home,Oklahoma City,2019-03-03
