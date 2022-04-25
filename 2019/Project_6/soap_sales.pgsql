@@ -1,13 +1,14 @@
 -- SQL flavor postgresql
 
 -- GOAL 
-    -- Union  two TABLES
-    -- Parse information reason for contact
-    -- Filter out contact rows without policy number
-
--- FUNCTIONS USED: Regexp_match, Case Statements, Date functions
+    -- Union  TABLES
+    -- Trim whitespaces
+    -- Aggregate
+-- FUNCTIONS USED: Join, Union, Case Statements
 
 -- Author Diana Kungu
+
+DROP TABLE IF EXISTS eng_agg;
 
 CREATE TABLE eng_agg AS
 
