@@ -4,13 +4,14 @@
     *\*\
     --.
      
--- GOAL 
+-- FUNCTION Used 
     -- Load data into DB 
-    -- Create end date for each contract
-    -- Aggregate revenue for each month and customer
-    -- JOIN LATERAL
+    -- With Clause
+    -- Aggregate 
+   
 
 -- Author Diana Kungu
+set client_encoding to 'utf8';
 
 DROP TABLE IF EXISTS departure_details, booking_log;
 
@@ -38,55 +39,44 @@ COPY booking_log FROM 'C:\Users\DIANA\Desktop\Projects\SQL\Data\Week7Challenge.c
 DELIMITER ','
 CSV HEADER;
 
-    
-UPDATE departure_details 
-SET ship_id = replace(ship_id, '-', '_');
+
 
 DROP TABLE IF EXISTS alloc;
 
 
 -- Aggregate booked product (weight and volume) by
 --- ship_id and departure date
-WITH bkd_agg AS(
-    SELECT b.ship_id::varchar[1], 
-           depart_date,
-           sum(allocated_weight) AS Total_weight,
-           sum(allocated_vol) Total_vol
-    FROM
-        (SELECT depart_id, 
-            -- split ship_id and departure date from depart_id
-            REGEXP_MATCH(depart_id, '(\w+-\d{2})') AS Ship_ID,
-            REGEXP_MATCH(depart_id, '\w+-\d{2}-(.+)') AS Depart_date,
-            allocated_weight,
-            allocated_vol
-        FROM booking_log ) b
-    GROUP BY b.Ship_ID, depart_date
+
+
+WITH booked_agg AS(
+    SELECT  depart_id, 
+            sum(allocated_weight) AS Total_weight,
+            sum(allocated_vol) Total_vol 
+    FROM booking_log 
+    GROUP BY depart_id
+    ),
+
+    dep_ids AS(
+    SELECT *,
+        CONCAT(ship_id, '-', 
+        LPAD((EXTRACT(DAY FROM depart_date))::TEXT, 2, '0'), '-',
+        LPAD((EXTRACT(MONTH FROM depart_date))::TEXT, 2, '0'), '-',
+        EXTRACT(YEAR FROM depart_date)) AS depart_id    
+    FROM departure_details 
     )
 
-    /*dep AS (
-        SELECT DISTINCT ON(ship_id) ship_id,
-            depart_date, max_weight, max_vol
-        FROM departure_details )*/
- 
-SELECT b.* 
-INTO TABLE alloc
-FROM bkd_agg b;
+SELECT  d.depart_date,
+        d.ship_id,
+        d.max_weight,
+        d.max_vol,
+        bk.total_weight,
+        bk.total_vol,
+        CASE WHEN bk.total_weight > d.Max_Weight THEN 'TRUE' ELSE 'FALSE' END AS Max_Weight_Exceeded,
+        CASE WHEN bk.total_vol > d.Max_Vol THEN 'TRUE' ELSE 'FALSE' END AS Max_Volume_Exceeded
+FROM booked_agg bk
+JOIN dep_ids d
+	ON bk.depart_id = d.depart_id  
+ORDER BY
+d.depart_id;
 
-SELECT *
-from alloc;
 
-UPDATE alloc 
-    SET ship_id = replace(ship_id, 'T', 'W');
-
-
-SELECT  *
-from boo;
-
-from bkd_agg a 
-JOIN   departure_details d 
-    ON (a.ship_id) = (d.ship_id::VARCHAR[])
-;
-
-SELECT regexp_replace(ship_id, '[-]', '__') AS new_id
-from departure_details
-;
