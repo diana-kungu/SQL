@@ -2,7 +2,8 @@
 
 -- GOAL 
     --Clean Date field 
-    -- FUNCTIONS USED: Split_part, To_date, Extract + Month
+    
+-- FUNCTIONS USED: Split_part, To_date, Extract + Month
 
 -- Author Diana Kungu
 
