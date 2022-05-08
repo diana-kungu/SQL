@@ -9,20 +9,6 @@
      
 -- Author Diana Kungu
 
--- Load Data
-
-DROP TABLE IF EXISTS stck;
-
-CREATE TABLE stck(
-    JSON_NAME VARCHAR,
-    JSON_VALUE_STRING VARCHAR
-);
-
-COPY stck FROM 'C:\Users\DIANA\Desktop\Projects\SQL\Data\PD - JSON DATA Stock data - PD - JSON DATA Stock data.csv'
-DELIMITER ','
-CSV HEADER;
-
-
 -- Exclude 'meta' and '' records in the same column to just leave
 -- 'indicators' and 'timestamp'
 
