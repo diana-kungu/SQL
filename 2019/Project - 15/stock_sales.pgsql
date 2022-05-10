@@ -1,12 +1,16 @@
 -- SQL flavor postgresql
 
 --Scenario/Goal
- /**/
+ /*Pull a list of clients purchases together across all their 5  regions Tables
+   Determine the % of total sales each transaction makes up:
+        *  In Region
+        *  Across the whole firm
+The final file should only contain sales that are not the only purchase of that 
+share. 
      
 -- FUNCTIONS 
-    -- Joins,
-    -- Date Parsing, Aggregate 
---/*
+    -- UNION,WINDOW FUNCTIONS, Aggregate 
+--*/
 -- Step 1:
 -- Union all region tables 
 CREATE TEMP TABLE stocks_all AS (
