@@ -1,8 +1,5 @@
 -- SQL flavor postgresql
-
---Scenario/Goal
-    -- Union tables,
-     
+    
 -- FUNCTIONS 
     -- Timestamp, case stmts, trunc, 
     -- Window_functions

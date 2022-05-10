@@ -78,4 +78,5 @@ GROUP BY
     Quarter, c_name, account
 ORDER BY Min(date);
 
+-- Remove table
 DROP TABLE Trans_compiled;
