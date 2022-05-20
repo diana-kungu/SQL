@@ -29,7 +29,7 @@ WITH tdf_agg AS (
             OVER (ORDER BY time_seconds) time_diff_per_team   
 
     FROM soap.sponser,
-        LATERAL (SELECT SUBSTRING(time,1,2)::int * 3600 + 
+        LATERAL (SELECT SUBSTRING(time,1,2)::int * 3600 + -- convert time duration into seconds
                         SUBSTRING(time, 5, 2)::int * 60 +
                         SUBSTRING(time, 9, 2)::int time_seconds
                 ) t
