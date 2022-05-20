@@ -1,58 +1,42 @@
 -- SQL flavor postgresql
 
 --Scenario/Goal
- /* Chin & Beard Suds Co. is growing from strength to strength and this has led
-  us to think big - sponsorship!What we are looking for in the team to sponsor is a team that works really hard 
-  (ie are sweaty!) but are all consistently doing well 
-  Using the 2018 Tour de France results find the team(s) that 
-    -- Have seven or more riders complete the tour
-    -- Must average 100 minutes or less behind the leader as a team
+ /* Chin & Beard Suds Co. have had a local hospital get in contact about a number of patients 
+ who have had an allergic reaction to some of its products. As a company, we want to cover 
+ customers' medical expenses as we haven't labelled our products  clearly enough (or people aren't reading the ingredients).
+
+Create the following views:
+    1. Daily Hospital Costs
+    2. Cost per Patient
 
  -- Functions Used:
-    CTEs, WINDOW FUNCTIONS- FIRST_VALUE, AGGREGATE,
-    -- LATERAL JOIN
+    Scaffolding, Date FUNCTIONS(Add), AGGREGATE + GROUP BY,
+    -- CROSS JOIN LATERAL 
  
 -- Author: Diana Kung'u 
-drop TABLE Soap.patients;
-CREATE TABLE soap.Cost (
-     
-     LengtH_OF_stay varchar,
-     Cost_per_Day integer
-);
---COPY Data into table
-COPY soap.Cost FROM 'C:\Users\DIANA\Desktop\Projects\SQL\Data\PD - Week 20_Cost_per_visit.csv'
-DELIMITER ','
-CSV HEADER;
-
-CREATE TABLE soap.scaffold (
-     value integer
-);
---COPY Data into table
-COPY soap.scaffold FROM 'C:\Users\DIANA\Desktop\Projects\SQL\Data\PD - Week 20_scaffold.csv'
-DELIMITER ','
-CSV HEADER; --*/
+*/
 
 --Step 1:
-    -- Build a complete dataset for each date a patient is in hospital(Scaffold)
+    -- Build a complete dataset for each date a patient is in hospital(Scaffold by length_of_stay)
     -- Create new date field
 CREATE TEMP TABLE patients_scaffold AS(
     SELECT 
             p.Name,
-            --p.First_Visit,
             p.Length_of_Stay AS Total_Length_of_Stay,
-            'First Visit' AS Visit_type,
-            s.Value + 1 AS Day_number,
-            first_visit + interval '1 day' * s.Value AS Day_at_hospital
-    FROM soap.patients p
-    CROSS JOIN LATERAL 
-        (SELECT
-                Value
-        FROM soap.scaffold s1
-        WHERE 
+            s1.Value + 1 AS Day_number,
+            first_visit + interval '1 day' * s1.Value AS Day_at_hospital
+    FROM 
+            soap.patients p
+    
+    CROSS JOIN 
+            soap.scaffold s1
+        
+    WHERE 
             s1.Value < p.Length_of_Stay
-        ) s
-    ORDER BY p.Name,
-            s.Value + 1
+        
+    ORDER BY 
+            p.Name,
+            s1.Value + 1
 );
 -- Step 2:
 -- Add cost per day data to patients_scaffold
