@@ -28,9 +28,9 @@ CREATE TABLE subs(
     Signup_Date Date 
     );
 
-    COPY subs FROM 'C:\Users\DIANA\Desktop\Projects\SQL\Data\mailing_lst.csv'
-    DELIMITER ','
-    CSV HEADER;
+COPY subs FROM 'C:\Users\DIANA\Desktop\Projects\SQL\Data\mailing_lst.csv'
+DELIMITER ','
+CSV HEADER;
 
 
 -- Unsubscription table
