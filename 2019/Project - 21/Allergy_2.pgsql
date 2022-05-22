@@ -4,6 +4,10 @@
  /* Chin & Beard Suds Co. have had a local hospital get in contact about a number of patients 
  who have had an allergic reaction to some of its products. As a company, we want to cover 
  customers' medical expenses as we haven't labelled our products  clearly enough (or people aren't reading the ingredients).
+    - Update week 20 data with new data set
+    - Add Frequency of Check-Ups data
+    - Use Frequency of Check-Ups to determine when a patient will re-enter hospital by using Frequency from the date the patient leaves hospital
+    - Understand the additional cost incurred by the extra days stayed (treat each Check-up as a new entry in to hospital - ie Check-up day one is £100 no matter length of previous stay)
 
 Create the following views:
     1. Daily Hospital Costs
