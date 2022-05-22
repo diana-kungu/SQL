@@ -36,7 +36,7 @@ CREATE TEMP TABLE msg_parsed AS
 CREATE TEMP TABLE msg_combined AS 
     (  
         SELECT 
-                m.name, m.datetime,
+                m.name,
                 m.message,
                 m.Total_msgs, 
                 CASE WHEN ((msg_time >= TO_TIMESTAMP('09:00:00', 'HH24:MI:SS')::time AND
@@ -55,7 +55,6 @@ CREATE TEMP TABLE msg_combined AS
             ) d
             ON m.msg_date =  d.msg_date
 
-        --WHERE d.holiday = 'Weekday'
     )
 ;
 --Step 3. 
@@ -66,25 +65,15 @@ CREATE TEMP TABLE msg_combined AS
 CREATE TEMP TABLE msg_agg AS
     (
         SELECT 
-            name, s.No_sentences, 
+            name, 
             Total_msgs,
             working_hrs,
             array_length(
-                STRING_TO_ARRAY(
-                        REGEXP_REPLACE(s.No_sentences, '^\s*', ''), ' '),1) Words
+                STRING_TO_ARRAY(message, ' ') , 1) Words
+                      
         FROM
 
-            msg_combined,
-
-        LATERAL 
-            (SELECT 
-                UNNEST(REGEXP_SPLIT_TO_ARRAY(message, E'[?!\.]'))
-            No_sentences
-            ) s
-        WHERE   
-                ASCII(LEFT(s.No_sentences,1)) != 0 
-               
-
+            msg_combined
         ORDER BY 
                 Name
     );
