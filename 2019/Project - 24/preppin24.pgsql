@@ -2,10 +2,12 @@
 
 --Scenario/Goal
  /*
-    Text Parsing
+    Text Parsing:
+
  */
      
--- FUNCTIONS
+-- FUNCTIONS WINDOW FUNCTIONS, JOINS(lateral/inner)
+-- Date functions, AGGREGATE
 
 
 --Step 1: Parse field_1
@@ -83,7 +85,8 @@ CREATE TEMP TABLE msg_agg AS
     - Who has the highest amount of words per message*/
 
 Select 
-        name, max(words) AS longest_msg,
+        name, 
+        max(words) AS longest_msg,
         sum(words) Number_of_words,
         max(Total_msgs) AS Text,
         sum(words)/max(Total_msgs) AS Avg_words_per_message,
