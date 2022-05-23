@@ -15,15 +15,14 @@ CREATE TEMP TABLE msg_parsed AS
     (
         SELECT 
             TRIM(m1.Name) AS Name,
-            m1.datetime,
             m1.datetime::date msg_date,
             m1.datetime::time msg_time,
-            COUNT(*) OVER (PARTITION BY m1.Name) AS Total_msgs,
+            COUNT(*) OVER (PARTITION BY m1.Name) AS Total_msgs, -- number of messages per name
             TRIM(SPLIT_PART(SPLIT_PART(field_1, ']', 2), ':', 2)) message
         FROM msg M,
         LATERAL
             (SELECT
-                TO_TIMESTAMP(SUBSTRING(SPLIT_PART(field_1, ']', 1), 2),
+                TO_TIMESTAMP(SUBSTRING(SPLIT_PART(field_1, ']', 1), 2), -- Extract datetime field
                 'dd/mm/yyyy, HH24:MI:SS') AS datetime,
             SPLIT_PART(SPLIT_PART(field_1, ']', 2), ':', 1) AS Name
             ) m1
@@ -39,7 +38,7 @@ CREATE TEMP TABLE msg_combined AS
                 m.name,
                 m.message,
                 m.Total_msgs, 
-                CASE WHEN ((msg_time >= TO_TIMESTAMP('09:00:00', 'HH24:MI:SS')::time AND
+                CASE WHEN ((msg_time >= TO_TIMESTAMP('09:00:00', 'HH24:MI:SS')::time AND -- flag messages sent during working hours
                     msg_time <= TO_TIMESTAMP('12:00:00', 'HH24:MI:SS')::time) OR
                     (msg_time >= TO_TIMESTAMP('13:00:00', 'HH24:MI:SS')::time AND
                     msg_time <= TO_TIMESTAMP('17:00:00', 'HH24:MI:SS')::time)
@@ -58,9 +57,7 @@ CREATE TEMP TABLE msg_combined AS
     )
 ;
 --Step 3. 
--- split message into sentences
---Count the number of words  per name and sentence
--- Filter messages sent during working hours
+--Count the number of words  per name and message
 
 CREATE TEMP TABLE msg_agg AS
     (
@@ -69,18 +66,24 @@ CREATE TEMP TABLE msg_agg AS
             Total_msgs,
             working_hrs,
             array_length(
-                STRING_TO_ARRAY(message, ' ') , 1) Words
+                STRING_TO_ARRAY(message, ' ') , 1) Words -- words per message
                       
         FROM
-
             msg_combined
+
         ORDER BY 
                 Name
     );
 
+--Step4: 
+/* Aggregate to find the following metrics:
+    - Who sent the most messages overall?
+    - Who sent the highest percentage of messages whilst at work?
+    - Who sent the longest message?
+    - Who has the highest amount of words per message*/
 
 Select 
-        name,
+        name, max(words) AS longest_msg,
         sum(words) Number_of_words,
         max(Total_msgs) AS Text,
         sum(words)/max(Total_msgs) AS Avg_words_per_message,
