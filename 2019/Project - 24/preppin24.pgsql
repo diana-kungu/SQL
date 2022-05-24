@@ -2,7 +2,7 @@
 
 --Scenario/Goal
  /*
-    Text Parsing:
+    Text Parsing:- Regex
 
  */
      
