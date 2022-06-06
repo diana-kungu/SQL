@@ -2,11 +2,10 @@
 
 --Scenario/Goal
  /*
-    Text Parsing:- Date functions
-
+    UN-PIVOTING COLUMNS
  */
      
--- FUNCTIONS WINDOW FUNCTIONS
+-- FUNCTIONS WINDOW FUNCTIONS(SUM, LAG)
 
 --Step 1: Unpivot the proximity, task fields
 CREATE TEMP TABLE workers_unpivoted AS
