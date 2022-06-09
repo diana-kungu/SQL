@@ -60,7 +60,7 @@ CREATE TEMP TABLE pckg_yrly_1 AS
 );
 
 -- Step 3: Aggregate to obtain Annual_subscription_cost and Avg price per order
-CREATE TEMP TABLE pckg_yrly_without_mystry AS
+CREATE TEMP TABLE pckg_yrly_without_mystery AS
    (SELECT 
       name,
       frequency,
@@ -77,12 +77,14 @@ CREATE TEMP TABLE pckg_yrly_without_mystry AS
 
 --Step 4a - Subscription Pricing Table:
 SELECT
-   AVG(packages) Subscription_Package,
+   packages Subscription_Package,
    Product,
    AVG(case when product = 'Mystery' THEN Mystery_cost       
       ELSE price END) AS price
-FROM pckg_yrly_without_mystry
-GROUP BY packages, Product
+FROM pckg_yrly_without_mystery
+
+GROUP BY packages,
+         Product
 ;
 
 --Step 4a - Subscription Cost per annum
@@ -90,7 +92,7 @@ SELECT
       name,
       SUM(case when product = 'Mystery' THEN Mystery_cost       
       ELSE price END * Order_per_yr) Subscription_cost_per_annum
-FROM pckg_yrly_without_mystry
+FROM pckg_yrly_without_mystery
 GROUP BY name
 
 
