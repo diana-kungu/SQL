@@ -2,7 +2,7 @@
 
 --Scenario/Goal
  /*
-    Text Parsing:- Date functions
+    Text Parsing:- REGEX
 
  */
      
@@ -29,7 +29,7 @@ WITH twt_rcds AS
     (SELECT 
             tweet_id,
             REGEXP_REPLACE(comment::Text, '[[:punct:]]', '', 'g') AS no_punct_comment,
-            comment,
+            comment[1],
             created_at,
             TRIM(UNNEST(STRING_TO_ARRAY(Category::Text, ',')), '{|}') AS Category,
             UNNEST(ARRAY [water_temp[1], air_temp[1]]) temp_F,
@@ -41,13 +41,15 @@ WITH twt_rcds AS
 
 -- step 3: Remove Common English words and punctuactions
 SELECT
-        UNNEST(STRING_TO_ARRAY(no_punct_comment, ' ')) AS comment_split,
+        UNNEST(STRING_TO_ARRAY(
+            regexp_replace(no_punct_comment, '\s+', ' ', 'g'),
+             ' ')) AS comment_split,
         category, 
         temp_F,
         temp_C,
         comment,
         tweet_id,
-        created_at
+        created_at 
        -- w.word
 INTO TEMP twt
 FROM twt_rcds 
@@ -60,7 +62,7 @@ LEFT JOIN wrds w
 ;*/
 ;
 
---COPY
+COPY
     (select 
             category, 
             temp_F,
@@ -68,16 +70,18 @@ LEFT JOIN wrds w
             comment,
             tweet_id,
             created_at,
-            comment_split
+            lower(TRIM(comment_split))
     from twt t
     WHERE  (NOT EXISTS
             (SELECT NULL 
                 FROM wrds w
-                WHERE lower(t.comment_split) = lower(w.word)))
+                WHERE lower(TRIM(comment_split)) = lower(
+                    REGEXP_REPLACE(w.word::Text, '[[:punct:]]', '', 'g')
+                    )
+            ))
             
-            AND comment_split IS NOT NULL
     ORDER BY created_at, tweet_id, category)
---TO 'C:\Users\DIANA\Desktop\Projects\SQL\2019\output1.csv'
---DELIMITER ',' 
---CSV HEADER
+TO 'C:\Users\DIANA\Desktop\Projects\SQL\2019\output2.csv'
+DELIMITER ',' 
+CSV HEADER
 ;
